@@ -1,0 +1,41 @@
+{% extends 'base_navi_footer.html' %}
+{% load static %}
+{% block content %}
+{% for x in messages %}
+<h2>{{x}}</h2>
+{% endfor %}
+<hr>
+  <div class="container">
+          <!-- Page Features -->
+    <div class="row text-center">
+      {% for c in cars %}
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+              {% if c.picture %}
+                    <img src="{{c.picture.url}}" width="253px" height="169px">
+                {% endif %}
+          <div class="card-body">
+              <a  href="/car/{{c.id}}" class="card-title"> <h4>{{c.car_model}} {{c.name}} {{c.year}}թ․ </h4> </a>
+            <p class="card-text"> {{c.price}}$</p>
+          </div>
+            <!-- ---------------------------->
+            <div class="container">
+
+                <ul id="horizon">
+
+                    <li>
+                        <a href="/car/edit_car/{{c.id}}" class="btn btn-primary"  >Խմբագրել </a>
+                   </li>
+                   <li>
+                       <a href="/car/del_car/{{c.id}}" class="btn btn-primary">Ջնջել </a>
+                   </li>
+                </ul>
+            </div>
+<!------------------------------>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

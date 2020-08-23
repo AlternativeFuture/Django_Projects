@@ -1,0 +1,24 @@
+{% extends 'base_navi_footer.html' %}
+
+{% block content %}
+<button onclick="window.location.href = '/';">Back</button>
+<form action="." method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+{% endblock %}

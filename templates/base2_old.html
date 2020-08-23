@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>auto.am</title>
+</head>
+    <body>
+     <a href="/">Գլխավոր էջ</a>||
+
+        {% if user.is_authenticated %}
+            <a href="/account/logout">Ելք {{auth_username}}  </a>||
+            <a href="/car/create"> Տեղադրել հայտարարություն </a>||
+            <a href="/account/user_page"> Իմ էջ </a>||
+        {% else %}
+            <a href="/account/login">Մուտք</a>||
+            <a href="/account/register">Գրանցվել</a>||
+        {% endif %}
+    <button onclick="goBack()">Back</button>
+                <script>
+                    function goBack() {window.history.back();}
+                </script>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
+</html>

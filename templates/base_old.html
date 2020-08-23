@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>auto.am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 5;
+}
+
+/* Style the header */
+.header {
+  background-color: grey;
+  padding: 10px;
+  text-align: center;
+}
+</style>
+</head>
+    <body>
+    <div class="header">
+  <h1>ԱՎՏՈՇՈՒԿԱ</h1>
+</div>
+
+    <a href="/">Գլխավոր էջ</a>||
+
+        {% if user.is_authenticated %}
+            <a href="/account/logout">Ելք {{auth_username}}  </a>||
+            <a href="/create"> Տեղադրել հայտարարություն </a>||
+            <a href="/account/user_page"> Իմ էջ </a>||
+        {% else %}
+            <a href="/account/login">Մուտք</a>||
+            <a href="/account/register">Գրանցվել</a>||
+        {% endif %}
+    <button onclick="goBack()">Back</button>
+                <script>
+                    function goBack() {window.history.back();}
+                </script>
+    <hr>
+        <form action="/" method="get">
+            <input name="q" type="text" placeholder="Search..." {% if q %} value="{{q}}" {% endif %}>
+        <h4>Տարեթիվը</h4>
+            <input name="year_min" type="text" placeholder="սկսած" {% if year_min %} value="{{year_min}}" {% endif %}>
+            <input name="year_max" type="text" placeholder="մինչև" {% if year_max %} value="{{year_max}}" {% endif %}>
+        <h4>Գինը</h4>
+            <input name="min" type="text" placeholder="սկսած" {% if min %} value="{{min}}" {% endif %}>
+            <input name="max" type="text" placeholder="մինչև" {% if max %} value="{{max}}" {% endif %}>
+            <button type="submit"  value="Submit">Փնտրել</button>
+        </form>
+    <hr>
+    <form action="/" method="get">
+        <input type="checkbox" id="vehicle1" name="wheel_right" value="right">
+            <label for="vehicle1"> Ղեկը աջ</label>
+        <input type="checkbox" id="vehicle2" name="wheel_left" value="left">
+            <label for="vehicle2"> Ղեկը ձախ</label>
+        <input type="submit" value="Փնտրել">
+    </form>
+    <hr>
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
+</html>

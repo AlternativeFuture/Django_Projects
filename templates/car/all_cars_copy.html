@@ -1,0 +1,56 @@
+{% extends 'base_navi_footer.html' %}
+
+{% block content %}
+
+    {% load car_extras %}
+
+<form action="/car/" method="get">
+            <input name="q" type="text" placeholder="Search..." {% if q %} value="{{q}}" {% endif %}>
+        <h4>Տարեթիվը</h4>
+            <input name="year_min" type="text" placeholder="սկսած" {% if year_min %} value="{{year_min}}" {% endif %}>
+            <input name="year_max" type="text" placeholder="մինչև" {% if year_max %} value="{{year_max}}" {% endif %}>
+        <h4>Գինը</h4>
+            <input name="min" type="text" placeholder="սկսած" {% if min %} value="{{min}}" {% endif %}>
+            <input name="max" type="text" placeholder="մինչև" {% if max %} value="{{max}}" {% endif %}>
+            <button type="submit"  value="Submit">Փնտրել</button>
+        </form>
+    <hr>
+    <form action="/car/" method="get">
+        <input type="checkbox" id="vehicle1" name="wheel_right" value="right">
+            <label for="vehicle1"> Ղեկը աջ</label>
+        <input type="checkbox" id="vehicle2" name="wheel_left" value="left">
+            <label for="vehicle2"> Ղեկը ձախ</label>
+        <input type="submit" value="Փնտրել">
+    </form>
+<!-- cars-----------------cars-----------------cars-----------------cars-----------------cars-->
+
+{% for c in page_obj %}
+
+<h2><a href="/{{c.id}}">{{c.car_model}} {{c.name}} {{c.year}} {{c.price}} </a> </h2>
+{% if c.picture %}
+         <img src="{{c.picture.url}}" width="300px" height="200px">
+        {% endif %}
+{% endfor %}
+
+
+
+<!--------Pagination--------------------Pagination----------------------------Pagination-->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="{% my_url 1 'page' request.GET.urlencode %}">&laquo; first</a>
+            <a href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="{% my_url page_obj.next_page_number 'page' request.GET.urlencode %}">next</a>
+            <a href="{% my_url page_obj.paginator.num_pages 'page' request.GET.urlencode %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+

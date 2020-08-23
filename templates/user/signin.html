@@ -1,0 +1,40 @@
+{% extends 'base_navi_footer.html' %}
+{% load static %}
+{% block content %}
+<br />
+<br />
+<br />
+         <header class="jumbotron my-4">
+             <div class="container">
+    <div class="row text-center">
+            <form action="." method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+        <input type="submit" class="btn btn-primary btn-lg" value="Submit">
+    </form>
+            </div>
+</div>
+        </header>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+{% endblock %}

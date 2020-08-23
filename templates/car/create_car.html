@@ -1,0 +1,22 @@
+{% extends 'base_navi_footer.html' %}
+{% load static %}
+{% block content %}
+<div class="newspaper">
+    <form action="." method="POST" enctype="multipart/form-data">
+        <div class="col-lg-3 col-md-6 mb-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        </div>
+            <div class="jumbotron my-5">
+                <input type="submit" class="btn btn-primary btn-lg" value="Submit">
+            </div>
+
+    </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

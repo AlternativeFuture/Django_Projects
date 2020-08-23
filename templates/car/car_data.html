@@ -1,0 +1,33 @@
+{% extends 'base_navi_footer.html' %}
+
+{% block content %}
+<div class="container">
+    <header class="jumbotron my-4">
+    {% if car.picture %}
+        <!--<div style="background-color:grey">-->
+            <img src="{{car.picture.url}}" width="550px" height="350px">
+        <!--</div>-->
+    {% endif %}
+    <!--<div style="background-color:lightblue">-->
+        <h3>Կատեգորիա:  {{ car.category }}</h3>
+        <h3>Արտադրող ։  {{ car.car_model }}</h3>
+        <h3>Մոդել ։     {{ car.name }}</h3>
+        <h3>Տարեթիվ ։   {{ car.year }}</h3>
+        <h3>Արժեք ։     {{ car.price }}$</h3>
+        <h3>Վազքը: {{ car.running  }}կմ</h3>
+        <h3>Մոդիֆիկացիա: {{ car.modification  }}</h3>
+        <h3>Թափք: {{ car.shed  }}</h3>
+        <h3>Փոխանցման տուփ: {{ car.transfer_box  }}</h3>
+        <h3>Ղեկ: {{ car.wheel  }}</h3>
+        <h3>Շարժիչ: {{ car.engine  }}</h3>
+        <h3>Գույնը: {{ car.color  }}</h3>
+        <h3>Սրահի գույնը: {{ car.color_of_the_hall  }}</h3>
+        <h3>Շարժիչի ծավալը: {{ car.engine_capacity  }} լիտր</h3>
+        <h3>Ձիաուժ: {{ car.horsepower  }} HP</h3>
+        <h3>Անվահեծերը: {{ car.cycling  }}"</h3>
+        <h3>Օգտվող: {{ car.author  }}</h3>
+    </header>
+</div>
+
+{% endblock %}
+

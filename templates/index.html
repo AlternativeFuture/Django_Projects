@@ -1,0 +1,47 @@
+{% extends 'base_navi_footer.html' %}
+{% load static %}
+{% block content %}
+
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <img src="/media/static_images/compositor.jpg" alt="Italian Trulli" width="570" height="240">
+        <h1 class="display-3">Բարի գալուստ ԱՎՏՈՇՈՒԿԱ</h1>
+        <p class="lead">Գրանցվելուց անմիջապես հետո կարող եք տեղադրել հայտարարություն</p>
+      {% if user.is_authenticated %}
+        <a href="/car/create" class="btn btn-primary btn-lg"> Տեղադրել հայտարարություն </a>
+      {% else %}
+         <a href="/account/login_post" class="btn btn-primary btn-lg"> Տեղադրել հայտարարություն</a>
+      {% endif %}
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+      {% for c in cars4 %}
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+              {% if c.picture %}
+                    <img src="{{c.picture.url}}" width="253px" height="169px">
+                {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{c.car_model}} {{c.name}} {{c.year}}թ․</h4>
+            <p class="card-text"> {{c.price}}$</p>
+          </div>
+          <div class="card-footer">
+            <a href="/car/{{c.id}}" class="btn btn-primary">Մանրամասն</a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  {% endblock %}
+
